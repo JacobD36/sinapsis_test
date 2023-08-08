@@ -1,6 +1,6 @@
 # SINOPSIS API REST TEST
 ***
-## Getting Started
+## Introducción
 
 El siguiente código responde a lo solicitado en la Prueba Técnica Backend Senior.
 
