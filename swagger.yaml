@@ -1,0 +1,150 @@
+openapi: 3.0.0
+info:
+  title: Sinopsis API Test
+  version: 1.0.0
+paths:
+  /api/messages/search:
+    post:
+      summary: Búsquedas personalizadas de mensajes
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estadoEnvio:
+                  type: integer
+                texto:
+                  type: string
+                fechaInicio:
+                  type: string
+                fechaFin:
+                  type: string
+                idCliente:
+                  type: integer
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          required: false
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          required: false    
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total: 
+                    type: integer
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        idMensaje:
+                          type: integer
+                        idCampania:
+                          type: integer
+                        estadoEnvio:
+                          type: integer
+                        fechaHoraEnvio:
+                          type: string
+                        mensaje:
+                          type: string
+                        estado:
+                          type: integer
+                        createdAt:
+                          type: string
+                        updatedAt:
+                          type: string
+                        campanium:
+                          type: object
+                          properties:
+                            idCampania:
+                              type: integer
+                            nombre:
+                              type: string
+                            idUsuario:
+                              type: integer
+                            fechaHoraProgramacion:
+                              type: string
+                            estado:
+                              type: integer
+                            createdAt:
+                              type: string
+                            updatedAt:
+                              type: string
+                            usuario:
+                              type: object
+                              properties:
+                                idUsuario:
+                                  type: integer
+                                idCliente:
+                                  type: integer
+                                usuario:
+                                  type: string
+                                estado:
+                                  type: integer
+                                createdAt:
+                                  type: string
+                                updatedAt:
+                                  type: string
+                                cliente:
+                                  type: object
+                                  properties:
+                                    idCliente:
+                                      type: integer
+                                    nombre:
+                                      type: string
+                                    estado:
+                                      type: integer
+                                    createdAt:
+                                      type: string
+                                    updatedAt:
+                                      type: string
+  /api/campaigns:
+    post:
+      summary: Crear campaña
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                idUsuario:
+                  type: integer
+                fechaHoraProgramacion:
+                  type: string
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  estado:
+                    type: integer
+                  idCampania:
+                    type: integer
+                  nombre:
+                    type: string
+                  idUsuario:
+                    type: integer
+                  fechaHoraProgramacion:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string

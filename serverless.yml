@@ -1,0 +1,64 @@
+service: sinapsis-test-service
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+plugins:
+  - serverless-offline
+
+functions:
+  clientsFunction:
+    handler: /dist/app.routesFunction
+    events:
+      - http:
+          path: /api/clients
+          method: ANY
+          cors: true
+      - http:
+          path: /api/clients/{id}
+          method: ANY
+          cors: true
+  usersFunction:
+    handler: /dist/app.routesFunction
+    events:
+      - http:
+          path: /api/users
+          method: ANY
+          cors: true
+      - http:
+          path: /api/users/{id}
+          method: ANY
+          cors: true
+  messagesFunction:
+    handler: /dist/app.routesFunction
+    events:
+      - http:
+          path: /api/messages
+          method: ANY
+          cors: true
+      - http:
+          path: /api/messages/{id}
+          method: ANY
+          cors: true
+      - http:
+          path: /api/messages/search
+          method: ANY
+          cors: true
+  campaignFunction:
+    handler: /dist/app.routesFunction
+    events:
+      - http:
+          path: /api/campaigns
+          method: ANY
+          cors: true
+      - http:
+          path: /api/campaigns/{id}
+          method: ANY
+          cors: true
+  documentFunction:
+    handler: /dist/app.routesFunction
+    events:
+      - http:
+          path: /api-docs
+          method: ANY
